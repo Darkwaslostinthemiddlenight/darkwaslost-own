@@ -33,13 +33,13 @@ MAX_VBV_LIMIT = 20  # Limit for VBV checks for non-subscribed users
 DAILY_CREDITS = 100  # Daily credits for non-subscribed users
 CC_GENERATOR_URL = "https://drlabapis.onrender.com/api/ccgenerator?bin={}&count={}"
 SQ_API_URL = "https://ccapi-by-dark-waslost.onrender.com/key=dark/cc={}"
-B3_API_URL = "http://api-b3-storm/gate=b3/key=wasdarkboy/cc={}"
+B3_API_URL = "http://api-b3-storm.onrender.com/gate=b3/key=wasdarkboy/cc={}"
 VBV_API_URL = "https://vbv-by-dark-waslost.onrender.com/key=darkwaslost/cc={}"
 SS_API_URL = "http://147.93.105.138:6677/gate=stsq/key=darkwaslost/cc={}"
 CC_API_URL = "https://api-cc-stormx.onrender.com/gate=site/key=darkwasd4rk/cc={}"
 AH_API_URL = "http://147.93.105.138:2367/gate=st5/key=darkwaslost/cc={}"
 SHOPIFY_API_URL = "https://api-cc-stormx-1.onrender.com/key=cytron/cc={}"
-B4_API_URL = "https://api-b4-storm/gate=b4/key=darkwaslost/cc={}"
+B4_API_URL = "https://api-b4-storm.onrender.com/gate=b4/key=darkwaslost/cc={}"
 PP_API_URL = "https://paypal-bdvj.onrender.com/gate=b3/key=wasdarkboy/cc={}"
 BOT_START_TIME = time.time()
 
