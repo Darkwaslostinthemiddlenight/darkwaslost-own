@@ -21,7 +21,7 @@ import requests
 from telebot import traceback, types
 
 # Initialize Telegram bot
-bot = telebot.TeleBot("8142769913:AAHsAz9Xzgv92j0--CZdcFUeoKmWdgv6EdE")
+bot = telebot.TeleBot("7726872211:AAH8Jsr_SdC4eu65ClHlNoMS732hGYTlGfY")
 FIREBASE_BASE_URL = 'https://stormx-ffbbb-default-rtdb.firebaseio.com'
 
 # Admin configuration
