@@ -1496,7 +1496,7 @@ def send_welcome(message):
     
     # Existing checks below (ORIGINAL CODE)
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     
     show_main_menu(message.chat.id)
@@ -1516,7 +1516,7 @@ def send_welcome(message):
     show_main_menu(message.chat.id)
 def send_welcome(message):
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     
     show_main_menu(message.chat.id)
@@ -2358,7 +2358,7 @@ def handle_buy(message):
 @bot.message_handler(func=lambda m: m.text and m.text.startswith('.bin'))
 def handle_bin(message):
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -2551,7 +2551,7 @@ def handle_unres(message):
 def handle_chk(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.Send Username & Chat Id of this Group Here @WasDarkboy To get approved")
@@ -2628,7 +2628,7 @@ def handle_chk(message):
 def handle_mchk(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -2804,7 +2804,7 @@ def check_st_cc(cc):
 @bot.message_handler(func=lambda m: m.text and m.text.startswith('.st'))
 def handle_st(message):
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. Join @STORMREDIRECT or subscribe to use.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. Join @stormxvup or subscribe to use.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved. Send details to @WasDarkboy to get approved.")
@@ -2929,7 +2929,7 @@ def handle_mst(message):
 def handle_sq(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -3007,7 +3007,7 @@ def handle_sq(message):
 def handle_msq(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -3122,7 +3122,7 @@ def handle_msq(message):
 def handle_b3(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -3204,7 +3204,7 @@ def handle_b3(message):
 def handle_mb3(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -3319,7 +3319,7 @@ def handle_mb3(message):
 def handle_vbv(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -3396,7 +3396,7 @@ def handle_vbv(message):
 def handle_mvbv(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -3506,7 +3506,7 @@ def handle_mvbv(message):
 def handle_cc(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -3592,7 +3592,7 @@ def handle_cc(message):
 def handle_mcc(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -3707,7 +3707,7 @@ def handle_mcc(message):
 def handle_sh(message):
     # Access control
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -3795,7 +3795,7 @@ def handle_sh(message):
 def handle_msh(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -3916,7 +3916,7 @@ def handle_msh(message):
 @bot.message_handler(func=lambda m: m.text and m.text.startswith('.gen'))
 def handle_gen(message):
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -4239,7 +4239,7 @@ def handle_gate_check(message):
 
     # Restrict usage in private DMs for non-subscribed users
     if message.chat.type == 'private' and user_id not in ADMIN_IDS and not is_user_subscribed(user_id):
-        bot.reply_to(message, "❌ This bot is restricted in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
 
     # Restrict usage in unapproved groups
@@ -4335,7 +4335,7 @@ def handle_gate_check(message):
 def handle_fake(message):
     # Restrict usage in DMs for non-subs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This command is locked in DMs. Join our group @STORMREDIRECT or subscribe to use it in private.")
+        bot.reply_to(message, "❌ This command is locked in DMs. Join our group @stormxvup or subscribe to use it in private.")
         return
 
     # Restrict usage in unapproved groups
@@ -4710,7 +4710,7 @@ def handle_au(message):
 def handle_mass(message):
     # Check if user is allowed to use the bot in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -4919,7 +4919,7 @@ def get_truecaller_details(phone_number):
 def handle_truecaller_check(message):
     # Lock usage properly
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot. Send request to @Darkboy336 to approve your group.")
@@ -5209,7 +5209,7 @@ def check_sitebase5_cc(cc):
 @bot.message_handler(func=lambda m: m.text and m.text.startswith('.mx'))
 def handle_mx(message):
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -5303,7 +5303,7 @@ def handle_mx(message):
 @bot.message_handler(func=lambda m: m.text and m.text.startswith('.mmx'))
 def handle_mmx(message):
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -5413,7 +5413,7 @@ def handle_mmx(message):
 def handle_lk(message):
     # Restrict usage for non-subscribed users in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs..")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs..")
         return
 
     # Restrict usage in unapproved groups
@@ -5535,7 +5535,7 @@ def handle_lk(message):
 def handle_img(message):
     # Restrict bot usage in DMs for unauthorized users
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -5610,7 +5610,7 @@ def handle_img(message):
 def proxy_checker(message):
     # Restrict usage in DMs for non-subscribers
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This command is locked in DMs. Join our group @STORMREDIRECT or subscribe to use it in private.")
+        bot.reply_to(message, "❌ This command is locked in DMs. Join our group @stormxvup or subscribe to use it in private.")
         return
 
     # Restrict usage in unapproved groups
@@ -5956,7 +5956,7 @@ def check_premium_auth_cc(cc):
 def handle_ax_free(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -6037,7 +6037,7 @@ def handle_max(message):
         
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -6257,7 +6257,7 @@ def check_sx_cc(cc):
 def handle_sx(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.Send Username & Chat Id of this Group Here @WasDarkboy To get approved")
@@ -6340,7 +6340,7 @@ def handle_sx(message):
 def handle_msx_sub_only(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -6675,7 +6675,7 @@ def check_b4_cc(cc):
 def handle_b4(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -6757,7 +6757,7 @@ def handle_b4(message):
 def handle_mb3(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -7092,7 +7092,7 @@ def check_b4_cc(cc):
 def handle_b4(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -7174,7 +7174,7 @@ def handle_b4(message):
 def handle_mb3(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -7510,7 +7510,7 @@ def check_ss_cc(cc):
 def handle_ss(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -7592,7 +7592,7 @@ def handle_ss(message):
 def handle_mss(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -7927,7 +7927,7 @@ def check_pp_cc(cc):
 def handle_pp(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -8302,7 +8302,7 @@ def check_sr_api_cc(cc):
 def handle_sr(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.Send Username & Chat Id of this Group Here @WasDarkboy To get approved")
@@ -8379,7 +8379,7 @@ def handle_sr(message):
 def handle_msr(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -8616,7 +8616,7 @@ def check_sp_api_cc(cc):
 def handle_pp(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.Send Username & Chat Id of this Group Here @WasDarkboy To get approved")
@@ -8693,7 +8693,7 @@ def handle_pp(message):
 def handle_mp(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -8926,7 +8926,7 @@ def check_at_cc(cc):
 def handle_at(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -9119,7 +9119,7 @@ def check_ah_cc(cc):
 def handle_ah(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
@@ -9197,7 +9197,7 @@ def handle_ah(message):
 def handle_mah(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
-        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @STORMREDIRECT or subscribe to use in DMs.")
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
         return
     elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
         bot.reply_to(message, "❌ This group is not approved to use this bot.")
