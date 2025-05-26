@@ -34,7 +34,7 @@ MAX_VBV_LIMIT = 20  # Limit for VBV checks for non-subscribed users
 DAILY_CREDITS = 100  # Daily credits for non-subscribed users
 CC_GENERATOR_URL = "https://drlabapis.onrender.com/api/ccgenerator?bin={}&count={}"
 SQ_API_URL = "https://ccapi-by-dark-waslost.onrender.com/key=dark/cc={}"
-B3_API_URL = "https://api-b33-stormx.onrender.com/gate=b4/key=wasdarkboy/cc={}"
+B3_API_URL = "https://api-b33-stormx.onrender.com/gate=b4/key=darkwaslost/cc={}"
 VBV_API_URL = "https://vbv-by-dark-waslost.onrender.com/key=darkwaslost/cc={}"
 SS_API_URL = "http://147.93.105.138:6677/gate=stsq/key=darkwaslost/cc={}"
 CC_API_URL = "https://api-cc-stormx.onrender.com/gate=site/key=darkwasd4rk/cc={}"
