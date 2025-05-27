@@ -4584,7 +4584,7 @@ def handle_scrape_cards(message):
         status_msg = bot.reply_to(message, "⏳ Scraping cards, please wait up to 2 minutes...")
 
         # API request
-        url = f"http://82.180.132.247:2233/key=waslost/uname/{username}/{count}"
+        url = f"https://card-scrapper.onrender.com/key=waslost/uname/{username}/{count}"
         response = requests.get(url, timeout=120)
 
         if response.status_code != 200:
