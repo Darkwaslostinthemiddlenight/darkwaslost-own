@@ -1430,23 +1430,22 @@ def format_mchk_response(results, total_cards, processing_time, checked=0):
     }
     
     response = f"""
-┌───────────────
-│  ✧ Total: {total_cards}
-│  ✧ Checked: {checked}/{total_cards}
-│ ✅ Approved: {approved}
-│ 🟡 CCN: {ccn}
-│ ❌ Declined: {declined}
-│ ⚠️ Errors: {errors}
-│ ⏱️ Time: {processing_time:.2f} S
-└───────────────
 
-<b>Mass Check</b>
-─━─━─━─━─━─━─━─━─━─
+✧ 𝐓𝐨𝐭𝐚𝐥↣{checked}/{total_cards}
+✧ 𝐂𝐡𝐞𝐜𝐤𝐞𝐝↣{checked}/{total_cards}
+✧ 𝐀𝐩𝐩𝐫𝐨𝐯𝐞𝐝↣{approved}  
+✧ 𝐂𝐂𝐍↣{ccn}
+✧ 𝐃𝐞𝐜𝐥𝐢𝐧𝐞𝐝↣{declined}
+✧ 𝐄𝐫𝐫𝐨𝐫𝐬↣{errors}
+✧ 𝐓𝐢𝐦𝐞↣{processing_time:.2f} 𝐒  
+
+<b>𝗠𝗮𝘀𝘀 𝗖𝗵𝗲𝗰𝗸</b>
+──────── ⸙ ─────────
 """
     
     for result in results:
         emoji = status_emojis.get(result['status'], '❓')
-        response += f"<code>{result['card']}</code>\nStatus: {emoji} {result['message']}\n─━─━─━─━─━─━─━─━─━─\n"
+        response += f"<code>{result['card']}</code>\n𝐒𝐭𝐚𝐭𝐮𝐬↣{emoji} {result['message']}\n──────── ⸙ ─────────\n"
     
     return response
 
@@ -2402,14 +2401,15 @@ def handle_bin(message):
 ┃ BIN Information
 ┗━━━━━━━━━━━⊛
 
-✧ BIN: <code>{bin_number[:6]}</code>
-✧ Bank: {bin_info.get('bank', 'N/A')}
-✧ Brand: {bin_info.get('brand', 'N/A')}
-✧ Type: {bin_info.get('type', 'N/A')}
-✧ Country: {bin_info.get('country_name', 'N/A')} {bin_info.get('country_flag', '🌐')}
-✧ Level: {bin_info.get('level', 'N/A')}
+✧ 𝐁𝐈𝐍: <code>{bin_number[:6]}</code>  
+✧ 𝐁𝐚𝐧𝐤: <code>{bin_info.get('bank', 'N/A')}</code>  
+✧ 𝐁𝐫𝐚𝐧𝐝: <code>{bin_info.get('brand', 'N/A')}</code>  
+✧ 𝐓𝐲𝐩𝐞: <code>{bin_info.get('type', 'N/A')}</code>  
+✧ 𝐂𝐨𝐮𝐧𝐭𝐫𝐲: <code>{bin_info.get('country_name', 'N/A')}</code> {bin_info.get('country_flag', '🌐')}  
+✧ 𝐋𝐞𝐯𝐞𝐥: <code>{bin_info.get('level', 'N/A')}</code>  
 
-✧ Checked By: {message.from_user.first_name}
+✧ 𝐂𝐡𝐞𝐜𝐤𝐞𝐝 𝐁𝐲: <code>{message.from_user.first_name}</code>
+
 """
                 bot.edit_message_text(chat_id=message.chat.id,
                                     message_id=status_msg.message_id,
@@ -8128,15 +8128,14 @@ def handle_broadcast_reply(message):
 
     # Initial status message
     status_text = f"""
-Broadcasting message...
+📢 𝐁𝐫𝐨𝐚𝐝𝐜𝐚𝐬𝐭𝐢𝐧𝐠 𝐌𝐞𝐬𝐬𝐚𝐠𝐞...
 
-┌───────────────
-│ 🔎 Total: {total}
-│ ✅ Successful: {success}
-│ ❌ Failed: {failed}
-│ ⚠️ Errors: {errors}
-│ ⏱️ Time: 0.00 S
-└───────────────
+✧ 𝐓𝐨𝐭𝐚𝐥: <code>{total}</code>  
+✧ 𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥: <code>{success}</code>  
+✧ 𝐅𝐚𝐢𝐥𝐞𝐝: <code>{failed}</code>  
+✧ 𝐄𝐫𝐫𝐨𝐫𝐬: <code>{errors}</code>  
+✧ 𝐓𝐢𝐦𝐞: 0.00 S
+
 """
     status_msg = bot.reply_to(message, status_text, parse_mode='HTML')
 
@@ -8176,13 +8175,14 @@ Broadcasting message...
         if (success + failed + errors) % 5 == 0 or (success + failed + errors) == total:
             elapsed = time.time() - start_time
             updated_status = f"""
-┌───────────────
-│ 🔎 Total: {total}
-│ ✅ Successful: {success}
-│ ❌ Failed: {failed}
-│ ⚠️ Errors: {errors}
-│ ⏱️ Time: {elapsed:.2f} S
-└───────────────
+📢 𝐁𝐫𝐨𝐚𝐝𝐜𝐚𝐬𝐭 𝐑𝐞𝐬𝐮𝐥𝐭𝐬
+
+✧ 𝐓𝐨𝐭𝐚𝐥 ↣ <code>{total}</code>  
+✧ 𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥 ↣ <code>{success}</code>  
+✧ 𝐅𝐚𝐢𝐥𝐞𝐝 ↣ <code>{failed}</code>  
+✧ 𝐄𝐫𝐫𝐨𝐫𝐬 ↣ <code>{errors}</code>  
+✧ 𝐓𝐢𝐦𝐞 ↣ <code>{elapsed:.2f} S</code>
+
 """
             try:
                 bot.edit_message_text(chat_id=message.chat.id,
