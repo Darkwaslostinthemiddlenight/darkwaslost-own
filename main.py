@@ -21,12 +21,12 @@ import requests
 from telebot import traceback, types
 
 # Initialize Telegram bot
-bot = telebot.TeleBot("7726872211:AAH8Jsr_SdC4eu65ClHlNoMS732hGYTlGfY")
+bot = telebot.TeleBot("7726872211:AAFMXDjLomTTRqrstrR1Cr9l8wB3XdHHNwc")
 FIREBASE_BASE_URL = 'https://stormx-ffbbb-default-rtdb.firebaseio.com'
 
 # Admin configuration
 ADMIN_IDS = ["6521162324"]
-HITS_GROUP_ID = -1002568476389  # Replace with your group ID
+HITS_GROUP_ID = -1002566747054  # Replace with your group ID
 APPROVED_GROUPS = set()
 MAX_CARDS_LIMIT = 10  # Default maximum cards allowed in /mchk and /msq
 MAX_SUBSCRIBED_CARDS_LIMIT = 30  # Increased limit for subscribed users
@@ -1303,7 +1303,7 @@ def check_au_cc(cc):
 
         try:
             # API request to AU endpoint
-            response = requests.get(f"https://au-api-storm.onrender.com/gate=stripe5/key=wasdark/cc={formatted_cc}", timeout=120)
+            response = requests.get(f"https://darkwaslost-sr-api.onrender.com/gate=stripe3/keydarkwaslost/cc={formatted_cc}", timeout=120)
             if response.status_code == 200:
                 try:
                     data = response.json()
