@@ -42,7 +42,7 @@ AH_API_URL = "https://authnet-api.onrender.com/gate=st5/key=darkwaslost/cc={}"
 SF_API_URL = "https://stripe-10.onrender.com/gate=st10/key=darkwaslost/cc={}"
 SHOPIFY_API_URL = "https://darkwaslost-cc-api-vnhx.onrender.com/key=cytron/cc={}"
 B4_API_URL = "https://api-b4-storm.onrender.com/gate=b4/key=darkwaslost/cc={}"
-PP_API_URL = "https://darkwaslost-pp-api.onrender.com/gate=b3/key=wasdarkboy/cc={}"
+PP_API_URL = "https://darkwaslost-pp-api-qapv.onrender.com/gate=b3/key=wasdarkboy/cc={}"
 PY_API_URL = "https://pyvbv2-api-storm.onrender.com/gate=paypal/key=waslost/cc={}"
 SVBV_API_URL = "https://pyvbv2-api-storm.onrender.com/gate=vbv2/key=waslost/cc={}"
 BOT_START_TIME = time.time()
