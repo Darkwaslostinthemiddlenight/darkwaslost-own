@@ -4296,7 +4296,7 @@ def handle_gate_check(message):
             time.sleep(0.6)
 
         # Call external API
-        api_url = f"https://gatefinder-dark-k0st.onrender.com/gatechk?site={site_url}"
+        api_url = f"https://gatefinder-dark-stormx.onrender.com/gatechk?site={site_url}"
         response = requests.get(api_url, timeout=300)
 
         if response.status_code != 200:
